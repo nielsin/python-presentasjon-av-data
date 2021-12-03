@@ -2,13 +2,13 @@
 Dette er en oppgave som går ut på å arbeide med og presentere middels strukturerte posisjonsdata i [Python](https://www.python.org/). Oppgaven kan løses hvordan du vil, men det kan være lurt å vurdere en form for Notebook. Enten [Jupyter Notebook](https://jupyter.org/) eller [ArcGIS Notebook](https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/pro-notebooks.htm). Det kan også være lurt å kikke på [pandas](https://pandas.pydata.org/) til databehandling, men du står helt fritt til å bruke andre datastrukturer når du arbeider med data.
 
 ## Oppgave
-Ta for deg datasettene som ligger i mappen [data](./data). Ved hjelp av [Python](https://www.python.org/) skal du automatisk generere et kart som presenterer datasettet. Lag et kart som presenterer hvert av datasettene på en god måte.
+Ta for deg datasettene som ligger i mappen [data](/data). Ved hjelp av [Python](https://www.python.org/) skal du automatisk generere et kart som presenterer datasettet. Lag et kart som presenterer hvert av datasettene på en god måte.
 
 ## Data
-Mappen [data](./data) inneholder en samling datasett med litt forskjellige utfordringer og egenskaper. Datasettene er autogenerert. Dersom du er nysgjerrig på hvordan de er laget eller ønsker å lage din egen variant ligger koden i mappen [datafabrikk](./datafabrikk). Her kommer det en kort beskrivelse av hvert enkelt datasett og noen små tips til hvordan de kan behandles:
+Mappen [data](/data) inneholder en samling datasett med litt forskjellige utfordringer og egenskaper. Datasettene er autogenerert. Dersom du er nysgjerrig på hvordan de er laget eller ønsker å lage din egen variant ligger koden i mappen [datafabrikk](/datafabrikk). Her kommer det en kort beskrivelse av hvert enkelt datasett og noen små tips til hvordan de kan behandles:
 
 ### Referansepunkter
-Filen [refpoints.xlsx](.data/refpoints.xlsx) inneholder noen hundre referansepunkter som er lagret i et Excel-ark. Posisjonene er desverre ikke uniforme. De forekommer enten som desimalgrader, [MGRS](https://en.wikipedia.org/wiki/Military_Grid_Reference_System) eller [DMS](https://en.wikipedia.org/wiki/Decimal_degrees).
+Filen [refpoints.xlsx](data/refpoints.xlsx) inneholder noen hundre referansepunkter som er lagret i et Excel-ark. Posisjonene er desverre ikke uniforme. De forekommer enten som desimalgrader, [MGRS](https://en.wikipedia.org/wiki/Military_Grid_Reference_System) eller [DMS](https://en.wikipedia.org/wiki/Decimal_degrees).
 
 For å åpne filen er det greit å bruke [pandas.read_excel()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html#pandas.read_excel).
 
@@ -17,10 +17,10 @@ For å gjøre operasjoner på en hel kolonne i [pandas](https://pandas.pydata.or
 For å behandle [MGRS](https://en.wikipedia.org/wiki/Military_Grid_Reference_System) finnes det en egen pakke for det: [mgrs](https://pypi.org/project/mgrs/). Den kan også hjelpe deg med [DMS](https://en.wikipedia.org/wiki/Decimal_degrees). Eller så har sikkert [ESRI](https://www.esri.com) noe.
 
 ### Adresser
-Filen [adresser.txt](.data/adresser.txt) inneholder noen få adressser. Det er en vanlig tekstfil som enelt kan åpne med [open()](https://docs.python.org/3/library/functions.html#open). Deretter kan du bruke en geokoder for å få koordinater tilbake. [GeoPy](https://geopy.readthedocs.io/en/stable) er enkel og grei. Den geokoderen som heter [Nominatim](https://geopy.readthedocs.io/en/stable/#nominatim) er basert på [OpenStreetMap](https://www.openstreetmap.org) og krever ingen innlogging.
+Filen [adresser.txt](data/adresser.txt) inneholder noen få adressser. Det er en vanlig tekstfil som enelt kan åpne med [open()](https://docs.python.org/3/library/functions.html#open). Deretter kan du bruke en geokoder for å få koordinater tilbake. [GeoPy](https://geopy.readthedocs.io/en/stable) er enkel og grei. Den geokoderen som heter [Nominatim](https://geopy.readthedocs.io/en/stable/#nominatim) er basert på [OpenStreetMap](https://www.openstreetmap.org) og krever ingen innlogging.
 
 ### Stridsmeldinger
-Filen [stridsmelding.zip](.data/stridsmelding.zip) inneholder 100 stridsmeldinger lagret i hver sin tekstfil.
+Filen [stridsmelding.zip](data/stridsmelding.zip) inneholder 100 stridsmeldinger lagret i hver sin tekstfil.
 
 Første steg er å hente ut tesksten slik at den kan prosesseres i [Python](https://www.python.org/). Det er god støtte for zip-filer gjennom [zipfile](https://docs.python.org/3/library/zipfile.html) så det er ikke noe behov for å pakke ut dette manuelt. Her er to mulige fremgangsmåter:
 * Den litt rotete måten er å pakke ut arkivet til en mappe med [ZipFile.extractall()](https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile.extractall) for deretter å bla seg gjennom filene med [os.listdir()]() eller [os.scandir()]() og deretter åpne dem med [open()](https://docs.python.org/3/library/functions.html#open).

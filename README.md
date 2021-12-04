@@ -2,7 +2,7 @@
 Dette er en oppgave som går ut på å arbeide med og presentere middels strukturerte posisjonsdata i [Python](https://www.python.org/). Oppgaven kan løses hvordan du vil, men det kan være lurt å vurdere en form for Notebook. Enten [Jupyter Notebook](https://jupyter.org/) eller [ArcGIS Notebook](https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/pro-notebooks.htm). Det kan også være lurt å kikke på [pandas](https://pandas.pydata.org/) til databehandling, men du står helt fritt til å bruke andre datastrukturer når du arbeider med data.
 
 ## Oppgave
-Ta for deg datasettene som ligger i mappen [data](/data). Ved hjelp av [Python](https://www.python.org/) skal du automatisk generere et kart som presenterer datasettet. Lag et kart som presenterer hvert av datasettene på en god måte.
+Ta for deg datasettene som ligger i mappen [data](/data). Ved hjelp av [Python](https://www.python.org/) skal du automatisk generere et kart som presenterer datasettet. Lag et kart til hvert datasett.
 
 ## Data
 Mappen [data](/data) inneholder en samling datasett med litt forskjellige utfordringer og egenskaper. Datasettene er autogenerert. Dersom du er nysgjerrig på hvordan de er laget eller ønsker å lage din egen variant ligger koden i mappen [datafabrikk](/datafabrikk). Her kommer det en kort beskrivelse av hvert enkelt datasett og noen små tips til hvordan de kan behandles:

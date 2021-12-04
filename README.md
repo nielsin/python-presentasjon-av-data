@@ -40,7 +40,7 @@ Etter at data er trukket ut av filene og lagt i en ryddig struktur (f.eks [panda
 * [Datashader](https://datashader.org/)
 * [ArcGIS Notebooks in ArcGIS Pro](https://www.esri.com/arcgis-blog/products/arcgis-pro/analytics/introducing-arcgis-notebooks-in-arcgis-pro/)
 
-Det aller enkleste eksportere kartet ditt til png/jpeg fra et av bibliotekene over.
+Det aller enkleste er å eksportere kartet ditt til png/jpeg fra et av bibliotekene over.
 
 Hvis du vil ta det et skritt lenger kan du legge kartet inn i et html-dokument slik at du kan legge inn mer informasjon som tekst eller noen annet for å lage et mer kompelett produkt. Da kan det også gjøres interaktivt ved å legge til litt javascript. Bilder kan legges inn i html-filer ved å bruke en kombinasjon av [io](https://docs.python.org/3/library/io.html) og [base64](https://docs.python.org/3/library/base64.html).
 

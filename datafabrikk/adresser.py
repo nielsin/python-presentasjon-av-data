@@ -1,36 +1,44 @@
-from geopy.geocoders import Nominatim
-import random
+# -*- coding: utf-8 -*-
 
-if __name__ == '__main__':
+from koordinatmaskin import RandomCoordinate
+
+def create_adresser(bbox, outfile, n=10):
+    
+    rc = RandomCoordinate(bbox=bbox)
 
     data = []
 
-    n = 10
-
-    top=59.940697
-    bottom=59.906802
-    right=10.811577
-    left=10.695190
-
-    outfile = 'data/adresser.txt'
-
-    geolocator = Nominatim(user_agent="geocode_task")
-
+    # Counters
     c = 0
+    _c = 0
+    
     while c < n:
-        # Calculate a random position
-        lat = bottom + (float(top-bottom) * random.random())
-        lon = left + (float(right-left) * random.random())
-
-        location = geolocator.reverse((lat, lon), language='NO', addressdetails=True)
-
+        
         try:
-            data.append('{road} {house_number}, {postcode} {city}, {country}'.format(**location.raw['address']))
+            data.append(rc.randomAddress())
             c+=1
         except:
-            pass
+            _c+=1
+        
+        # Raise error in case of multiple errors
+        if _c > 2*n:
+            raise Exception('Failed to geocode')
 
     with open(outfile, 'wb') as f:
         f.write('\n'.join(data).encode('utf-8'))
+
+
+if __name__ == '__main__':
+
+    bbox = dict(
+        top=59.940697,
+        bottom=59.906802,
+        right=10.811577,
+        left=10.695190,
+    )
+    
+    outfile = 'data/adresser.txt'
+
+    create_adresser(bbox, outfile, n=10)
 
 

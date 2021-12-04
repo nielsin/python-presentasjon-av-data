@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import pandas as pd
 import random
 import datetime
-import mgrs
 from zipfile import ZipFile
 
+import pandas as pd
+
+from koordinatmaskin import RandomCoordinate
+
+# Create some words to choose from
 words = {
     'rank_from': [
         'SJT.',
@@ -47,10 +50,12 @@ words = {
     ]
 }
 
+# Duplicate som of the entries
 words['name_to'] = words['name_from']
 words['rank_to'] = words['rank_from']
 words['dir2'] = words['dir1']
 
+# Message template with placeholders
 msg = """DTG {dtg_msg}
 FRA: {rank_from} {name_from}
 TIL: {rank_to} {name_to}
@@ -65,7 +70,9 @@ def dt2dtg(dt):
     # DTG 271913Anov08
     return dt.strftime('%d%H%MZ%b%y').upper()
 
-def stridsmelding(top=61, bottom=60, right=9, left=8, dt_from=None, dt_length=None):
+def stridsmelding(bbox, dt_from=None, dt_length=None):
+
+    rc = RandomCoordinate(bbox)
 
     # Message data
     msg_data = {}
@@ -89,13 +96,8 @@ def stridsmelding(top=61, bottom=60, right=9, left=8, dt_from=None, dt_length=No
     for w in words.keys():
         msg_data[w] = random.choice(words[w])
 
-    # Calculate a random position
-    lat = bottom + (float(top-bottom) * random.random())
-    lon = left + (float(right-left) * random.random())
-
-    # Convert to mgrs
-    m = mgrs.MGRS()
-    msg_data['mgrs'] = m.toMGRS(lat, lon)
+    # Create random MGRS
+    msg_data['mgrs'] = rc.randomMGRS()
 
     # Generate message
     gen_msg = msg.format(**msg_data)
@@ -105,15 +107,20 @@ def stridsmelding(top=61, bottom=60, right=9, left=8, dt_from=None, dt_length=No
 
     return gen_msg, fname
 
-if __name__ == '__main__':
-
-    outfile = 'data/stridsmelding.zip'
-    n = 100
+def create_stridsmeldinger(bbox, outfile, n=100):
 
     with ZipFile(outfile, 'w') as myzip:
         
         for i in range(n):
-            gen_msg, fname = stridsmelding()
+            gen_msg, fname = stridsmelding(bbox)
 
             with myzip.open(fname, mode='w') as myfile:
                 myfile.write(gen_msg.encode('utf-8'))
+
+if __name__ == '__main__':
+
+    bbox = dict(top=61, bottom=60, right=9, left=8)
+
+    outfile = 'data/stridsmelding.zip'
+    
+    create_stridsmeldinger(bbox, outfile, n=100)

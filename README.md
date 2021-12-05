@@ -1,8 +1,8 @@
 # Uttrekk og presentasjon av posisjonsdata
-Dette er en oppgave som går ut på å arbeide med og presentere middels strukturerte posisjonsdata i [Python](https://www.python.org/). Oppgaven kan løses hvordan du vil, men det kan være lurt å vurdere en form for Notebook. Enten [Jupyter Notebook](https://jupyter.org/) eller [ArcGIS Notebook](https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/pro-notebooks.htm). Det kan også være lurt å kikke på [pandas](https://pandas.pydata.org/) til databehandling, men du står helt fritt til å bruke andre datastrukturer når du arbeider med data.
+Dette er en oppgave som går ut på å arbeide med og presentere middels strukturerte posisjonsdata i [python](https://www.python.org/). Oppgaven kan løses hvordan du vil, men det kan være lurt å vurdere en form for Notebook. Enten [Jupyter Notebook](https://jupyter.org/) eller [ArcGIS Notebook](https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/pro-notebooks.htm). Det kan også være lurt å kikke på [pandas](https://pandas.pydata.org/) til databehandling, men du står helt fritt til å bruke andre datastrukturer når du arbeider med data.
 
 ## Oppgave
-Ta for deg datasettene som ligger i mappen [data](/data). Ved hjelp av [Python](https://www.python.org/) skal du automatisk generere et kart som presenterer datasettet. Lag et kart til hvert datasett.
+Ta for deg datasettene som ligger i mappen [data](/data). Ved hjelp av [python](https://www.python.org/) skal du automatisk generere et kart som presenterer datasettet. Lag et kart til hvert datasett.
 
 ## Data
 Mappen [data](/data) inneholder en samling datasett med litt forskjellige utfordringer og egenskaper. Datasettene er autogenerert. Dersom du er nysgjerrig på hvordan de er laget eller ønsker å lage din egen variant ligger koden i mappen [datafabrikk](/datafabrikk). Her kommer det en kort beskrivelse av hvert enkelt datasett og noen små tips til hvordan de kan behandles:
@@ -22,7 +22,7 @@ Filen [adresser.txt](data/adresser.txt) inneholder noen få adressser. Det er en
 ### Stridsmeldinger
 Filen [stridsmelding.zip](data/stridsmelding.zip) inneholder 100 stridsmeldinger lagret i hver sin tekstfil.
 
-Første steg er å hente ut tesksten slik at den kan prosesseres i [Python](https://www.python.org/). Det er god støtte for zip-filer gjennom [zipfile](https://docs.python.org/3/library/zipfile.html) så det er ikke noe behov for å pakke ut dette manuelt. Her er to mulige fremgangsmåter:
+Første steg er å hente ut tesksten slik at den kan prosesseres i [python](https://www.python.org/). Det er god støtte for zip-filer gjennom [zipfile](https://docs.python.org/3/library/zipfile.html) så det er ikke noe behov for å pakke ut dette manuelt. Her er to mulige fremgangsmåter:
 * Den litt rotete måten er å pakke ut arkivet til en mappe med [ZipFile.extractall()](https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile.extractall) for deretter å bla seg gjennom filene med [os.listdir()]() eller [os.scandir()]() og deretter åpne dem med [open()](https://docs.python.org/3/library/functions.html#open).
 * Den litt mer elegante måten er å bruke [ZipFile.namelist()](https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile.namelist) for å liste alt innholdet og deretter åpne filene direkte fra arkivet med [ZipFile.open()](https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile.open).
 
@@ -47,3 +47,10 @@ Hvis du vil ta det et skritt lenger kan du legge kartet inn i et html-dokument s
 En annen mulighet er å skrive direkte til Word (f.eks [python-docx](https://python-docx.readthedocs.io/en/latest/)) eller Powerpoint (f.eks [python-pptx](https://python-pptx.readthedocs.io/en/latest/)).
 
 Interaktive web-apper er også en mulighet. [Plotly Dash](https://plotly.com/dash/) gjør det ganske enkelt å lage en app.
+
+## Installasjon
+[Python](https://www.python.org/) er ofte en del av installasjonen til annen programvare som f.eks [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview). Hvis du ikke allerede har [python](https://www.python.org/) kan det lastes ned fra https://www.python.org/.
+
+For å installere pakker utover det som finnes i [The Python Standard Library](https://docs.python.org/3/library/index.html#the-python-standard-library) kan du bruke enten [PyPI](https://pypi.org/) eller [Anaconda](https://anaconda.org/). Hvis du bruker Windows operativsystem er det ofte enklere å bruke [Anaconda](https://anaconda.org/) for å slippe kompilering. Hvis du uansett ønsker eller må bruke [PyPI](https://pypi.org/) på Windows kan det være mye hjelp i å hente ferdig kompilerte wheels fra [Christoph Gohlke](https://www.lfd.uci.edu/~gohlke/pythonlibs/).
+
+Uansett hva du velger er det lurt å bruke mekanismer som isolerer hvert enkelt kjøremiljø. [Anaconda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) for [conda](https://anaconda.org/) eller [virtualenv](https://virtualenv.pypa.io/) for [pip](https://pypi.org/).

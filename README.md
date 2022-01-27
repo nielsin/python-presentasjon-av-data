@@ -32,6 +32,7 @@ For behandling av dato og tid er det [datetime](https://docs.python.org/3/librar
 
 ## Presentasjon
 Etter at data er trukket ut av filene og lagt i en ryddig struktur (f.eks [pandas](https://pandas.pydata.org/)) kan de rimelig enkelt plottes i et kart. Her er det mange alternativer. Her er noen:
+* [ipyleaflet](https://ipyleaflet.readthedocs.io/en/latest/)
 * [matplotlib](https://matplotlib.org/) / [cartopy](https://scitools.org.uk/cartopy/docs/latest/index.html)
 * [plotly](https://plotly.com/)
 * [seaborn](http://seaborn.pydata.org/)
